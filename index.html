@@ -14,6 +14,9 @@
       }
       function play(playerSel, computerSelect) {
         let playerSelect = playerSel.toLowerCase();
+        if (!["rock", "paper", "scissors"].includes(playerSelect)) {
+          return "Invalid input!";
+        }
         let outcome = "";
         if (playerSelect === "rock") {
           if (computerSelect === "rock") {
@@ -48,12 +51,18 @@
       }
 
       function game() {
+        let playerScore = 0;
+        let compScore = 0;
         for (let i = 0; i < 5; i++) {
-          let playerScore = 0;
-          let compScore = 0;
           let playerInput = prompt("Rock, paper or scissors?");
-          let compInput = computerPlay();
-          let outcome = play(playerInput, compInput);
+          let computerInput = computerPlay();
+          let outcome = play(playerInput, computerInput);
+
+          if (outcome === "Invalid input!") {
+            i--;
+            console.log("You entered an invalid input! let's try that again.");
+            continue;
+          }
           if (outcome === `You win! ${playerInput} beats ${computerInput}`) {
             playerScore++;
           } else if (
@@ -64,6 +73,7 @@
             playerScore++;
             compScore++;
           }
+          console.log(outcome);
         }
         if (playerScore > compScore) {
           return "You win the best of 5!";
