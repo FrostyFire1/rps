@@ -33,39 +33,16 @@ function play(playerSel, computerSelect) {
       outcome = "win!";
     }
   }
-  if (outcome === "win!") {
-    return `You win! ${playerSelect} beats ${computerSelect}`;
-  } else if (outcome === "lose!") {
-    return `You lose! ${computerSelect} beats ${playerSelect}`;
-  } else return `Draw! ${playerSelect} can't beat ${computerSelect}`;
+  return outcome;
 }
 
-function game() {
-  let playerScore = 0;
-  let compScore = 0;
-  for (let i = 0; i < 5; i++) {
-    let playerInput = prompt("Rock, paper or scissors?");
-    let computerInput = computerPlay();
-    let outcome = play(playerInput, computerInput);
-
-    if (outcome === "Invalid input!") {
-      i--;
-      console.log("You entered an invalid input! let's try that again.");
-      continue;
-    }
-    if (outcome === `You win! ${playerInput} beats ${computerInput}`) {
-      playerScore++;
-    } else if (outcome === `You lose! ${computerInput} beats ${playerInput}`) {
-      compScore++;
-    } else {
-      playerScore++;
-      compScore++;
-    }
-    console.log(outcome);
-  }
-  if (playerScore > compScore) {
-    return "You win the best of 5!";
-  } else if (compScore > playerScore) {
-    return "You lost the best of 5!";
-  }
-}
+let buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    let userVal = e.target.innerText;
+    let computerVal = computerPlay();
+    let result = play(userVal, computerVal);
+    let resultDiv = document.querySelector("#result");
+    resultDiv.innerText = result;
+  });
+});
