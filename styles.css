@@ -1,9 +1,14 @@
 body {
   background-color: #260ead;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 button {
+  margin: 3px 0px;
   background-color: rgb(9, 102, 189);
-  color: rgb(255, 251, 0);
+  color: rgb(255, 255, 255);
   font-weight: bold;
   border: none;
   border-radius: 3px;
@@ -11,7 +16,7 @@ button {
 }
 
 #result {
-  color: rgb(255, 0, 76);
+  color: rgb(238, 228, 228);
   font-size: 30px;
   font-weight: bold;
 }
