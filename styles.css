@@ -1,0 +1,17 @@
+body {
+  background-color: #260ead;
+}
+button {
+  background-color: rgb(9, 102, 189);
+  color: rgb(255, 251, 0);
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+#result {
+  color: rgb(255, 0, 76);
+  font-size: 30px;
+  font-weight: bold;
+}
