@@ -12,8 +12,8 @@
         let options = ["rock", "paper", "scissors"];
         return options[Math.floor(Math.random() * options.length)];
       }
-      function play(playerSelect, computerSelect) {
-        let playerSelect = playerSelect.toLowerCase();
+      function play(playerSel, computerSelect) {
+        let playerSelect = playerSel.toLowerCase();
         let outcome = "";
         if (playerSelect === "rock") {
           if (computerSelect === "rock") {
@@ -45,6 +45,31 @@
         } else if (outcome === "lose!") {
           return `You lose! ${computerSelect} beats ${playerSelect}`;
         } else return `Draw! ${playerSelect} can't beat ${computerSelect}`;
+      }
+
+      function game() {
+        for (let i = 0; i < 5; i++) {
+          let playerScore = 0;
+          let compScore = 0;
+          let playerInput = prompt("Rock, paper or scissors?");
+          let compInput = computerPlay();
+          let outcome = play(playerInput, compInput);
+          if (outcome === `You win! ${playerInput} beats ${computerInput}`) {
+            playerScore++;
+          } else if (
+            outcome === `You lose! ${computerInput} beats ${playerInput}`
+          ) {
+            compScore++;
+          } else {
+            playerScore++;
+            compScore++;
+          }
+        }
+        if (playerScore > compScore) {
+          return "You win the best of 5!";
+        } else if (compScore > playerScore) {
+          return "You lost the best of 5!";
+        }
       }
     </script>
   </body>
