@@ -50,6 +50,16 @@ buttons.forEach((button) => {
     } else if (result === "lose!") {
       computerWins++;
     }
-    resultDiv.innerText = `${result} Current score: ${playerWins} - ${computerWins}`;
+    if (playerWins === 5) {
+      resultDiv.innerText = `You win ${playerWins} to ${computerWins}! Resetting the scores.`;
+      playerWins = 0;
+      computerWins = 0;
+    } else if (computerWins === 5) {
+      resultDiv.innerText = `You lose ${playerWins} to ${computerWins}! Resetting the scores.`;
+      playerWins = 0;
+      computerWins = 0;
+    } else {
+      resultDiv.innerText = `${result} Current score: ${playerWins} - ${computerWins}`;
+    }
   });
 });
