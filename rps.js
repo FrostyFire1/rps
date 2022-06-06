@@ -37,12 +37,19 @@ function play(playerSel, computerSelect) {
 }
 
 let buttons = document.querySelectorAll("button");
+let playerWins = 0;
+let computerWins = 0;
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     let userVal = e.target.innerText;
     let computerVal = computerPlay();
     let result = play(userVal, computerVal);
     let resultDiv = document.querySelector("#result");
-    resultDiv.innerText = result;
+    if (result === "win!") {
+      playerWins++;
+    } else if (result === "lose!") {
+      computerWins++;
+    }
+    resultDiv.innerText = `${result} Current score: ${playerWins} - ${computerWins}`;
   });
 });
